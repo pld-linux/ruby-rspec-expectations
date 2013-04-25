@@ -16,7 +16,7 @@ Source0:	http://rubygems.org/gems/%{gem_name}-%{version}.gem
 URL:		http://github.com/rspec/rspec-expectations
 BuildRequires:	rpm-rubyprov
 BuildRequires:	rpmbuild(macros) >= 1.656
-%if %{without tests}
+%if %{with tests}
 BuildRequires:	ruby-minitest
 BuildRequires:	ruby-rspec
 %endif
