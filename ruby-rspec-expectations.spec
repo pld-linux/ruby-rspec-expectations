@@ -1,20 +1,14 @@
 #
 # Conditional build:
-%bcond_with	bootstrap		# build with boostrap
 %bcond_without	tests		# build without tests
-
-%if %{with boostrap}
-%undefine	with_tests
-%endif
-
-# bootstrap: test needs rspec-core, however rspec-core depends on rspec-mocks
+# test needs rspec-core, however rspec-core depends on rspec-mocks
 # runtime part of rspec-mocks does not depend on rspec-core
 
 %define	gem_name	rspec-expectations
 Summary:	Rspec-2 expectations (should and matchers)
 Name:		ruby-%{gem_name}
 Version:	2.13.0
-Release:	0.1
+Release:	1
 License:	MIT
 Group:		Development/Languages
 Source0:	http://rubygems.org/gems/%{gem_name}-%{version}.gem
@@ -22,7 +16,7 @@ Source0:	http://rubygems.org/gems/%{gem_name}-%{version}.gem
 URL:		http://github.com/rspec/rspec-expectations
 BuildRequires:	rpm-rubyprov
 BuildRequires:	rpmbuild(macros) >= 1.656
-%if %{without bootstrap}
+%if %{without tests}
 BuildRequires:	ruby-minitest
 BuildRequires:	ruby-rspec
 %endif
@@ -34,18 +28,16 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 rspec-expectations adds `should` and `should_not` to every object and
 includes RSpec::Matchers, a library of standard matchers.
 
-%package	doc
+%package doc
 Summary:	Documentation for %{name}
 Group:		Documentation
 Requires:	%{name} = %{version}-%{release}
 
-%description	doc
+%description doc
 This package contains documentation for %{name}.
-
 
 %prep
 %setup -q -n %{gem_name}-%{version}
-
 
 %build
 %if %{with tests}
