@@ -6,6 +6,7 @@
 
 %define	gem_name	rspec-expectations
 Summary:	Rspec-2 expectations (should and matchers)
+Summary(pl.UTF-8):	Oczekiwania Rspec-2 (should oraz matchers)
 Name:		ruby-%{gem_name}
 Version:	2.13.0
 Release:	2
@@ -28,13 +29,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 rspec-expectations adds `should` and `should_not` to every object and
 includes RSpec::Matchers, a library of standard matchers.
 
-%package doc
-Summary:	Documentation for %{name}
-Group:		Documentation
-Requires:	%{name} = %{version}-%{release}
-
-%description doc
-This package contains documentation for %{name}.
+%description -l pl.UTF-8
+rspec-expectations dodaje `should` oraz `should_not` do każdego
+obiektu oraz zawiera RSpec::Matchers - bibliotekę standardowych
+funkcji dopasowujących.
 
 %prep
 %setup -q -n %{gem_name}-%{version}
@@ -63,8 +61,3 @@ rm -rf $RPM_BUILD_ROOT
 %{ruby_vendorlibdir}/rspec/matchers
 %{ruby_vendorlibdir}/rspec/expectations.rb
 %{ruby_vendorlibdir}/rspec/expectations
-
-%if 0
-%files	doc
-%defattr(644,root,root,755)
-%endif
