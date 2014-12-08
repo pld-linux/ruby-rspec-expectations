@@ -4,15 +4,15 @@
 # test needs rspec-core, however rspec-core depends on rspec-mocks
 # runtime part of rspec-mocks does not depend on rspec-core
 
-%define	gem_name	rspec-expectations
+%define	pkgname	rspec-expectations
 Summary:	Rspec-2 expectations (should and matchers)
 Summary(pl.UTF-8):	Oczekiwania Rspec-2 (should oraz matchers)
-Name:		ruby-%{gem_name}
+Name:		ruby-%{pkgname}
 Version:	2.13.0
-Release:	2
+Release:	3
 License:	MIT
 Group:		Development/Languages
-Source0:	http://rubygems.org/gems/%{gem_name}-%{version}.gem
+Source0:	http://rubygems.org/gems/%{pkgname}-%{version}.gem
 # Source0-md5:	2873d31ef1f8f65d3a04ac40e27825a1
 URL:		http://github.com/rspec/rspec-expectations
 BuildRequires:	rpm-rubyprov
@@ -35,20 +35,21 @@ obiektu oraz zawiera RSpec::Matchers - bibliotekę standardowych
 funkcji dopasowujących.
 
 %prep
-%setup -q -n %{gem_name}-%{version}
+%setup -q -n %{pkgname}-%{version}
 
 %build
+# write .gemspec
+%__gem_helper spec
+
 %if %{with tests}
 ruby -rubygems -Ilib/ -S rspec spec/
 %endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{ruby_vendorlibdir},%{_bindir}}
+install -d $RPM_BUILD_ROOT{%{ruby_vendorlibdir},%{ruby_specdir},%{_bindir}}
 cp -a lib/* $RPM_BUILD_ROOT%{ruby_vendorlibdir}
-
-# cleanups
-rm -f $RPM_BUILD_ROOT%{gem_instdir}/{.document,.gitignore,.travis.yml,.yardopts}
+cp -p %{pkgname}-%{version}.gemspec $RPM_BUILD_ROOT%{ruby_specdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -61,3 +62,4 @@ rm -rf $RPM_BUILD_ROOT
 %{ruby_vendorlibdir}/rspec/matchers
 %{ruby_vendorlibdir}/rspec/expectations.rb
 %{ruby_vendorlibdir}/rspec/expectations
+%{ruby_specdir}/%{pkgname}-%{version}.gemspec
