@@ -8,12 +8,12 @@
 Summary:	Rspec-2 expectations (should and matchers)
 Summary(pl.UTF-8):	Oczekiwania Rspec-2 (should oraz matchers)
 Name:		ruby-%{pkgname}
-Version:	2.13.0
-Release:	4
+Version:	2.14.5
+Release:	1
 License:	MIT
 Group:		Development/Languages
 Source0:	http://rubygems.org/gems/%{pkgname}-%{version}.gem
-# Source0-md5:	2873d31ef1f8f65d3a04ac40e27825a1
+# Source0-md5:	63e2297adfd5d8da9a57c54feb1c8f2c
 URL:		http://github.com/rspec/rspec-expectations
 BuildRequires:	rpm-rubyprov
 BuildRequires:	rpmbuild(macros) >= 1.656
@@ -21,7 +21,8 @@ BuildRequires:	rpmbuild(macros) >= 1.656
 BuildRequires:	ruby-minitest
 BuildRequires:	ruby-rspec
 %endif
-Requires:	ruby-diff-lcs
+Requires:	ruby-diff-lcs >= 1.1.3
+Requires:	ruby-diff-lcs < 2.0
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
