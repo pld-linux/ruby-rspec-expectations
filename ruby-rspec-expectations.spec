@@ -8,12 +8,12 @@
 Summary:	Rspec-2 expectations (should and matchers)
 Summary(pl.UTF-8):	Oczekiwania Rspec-2 (should oraz matchers)
 Name:		ruby-%{pkgname}
-Version:	2.14.5
+Version:	3.7.0
 Release:	1
 License:	MIT
 Group:		Development/Languages
 Source0:	http://rubygems.org/gems/%{pkgname}-%{version}.gem
-# Source0-md5:	63e2297adfd5d8da9a57c54feb1c8f2c
+# Source0-md5:	23a198e5227cb308417efef6d136c41e
 URL:		http://github.com/rspec/rspec-expectations
 BuildRequires:	rpm-rubyprov
 BuildRequires:	rpmbuild(macros) >= 1.656
@@ -57,10 +57,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README.md Changelog.md License.txt
-%{ruby_vendorlibdir}/rspec-expectations.rb
-%{ruby_vendorlibdir}/rspec/matchers.rb
-%{ruby_vendorlibdir}/rspec/matchers
+%doc README.md Changelog.md LICENSE.md
 %{ruby_vendorlibdir}/rspec/expectations.rb
 %{ruby_vendorlibdir}/rspec/expectations
+%{ruby_vendorlibdir}/rspec/matchers.rb
+%{ruby_vendorlibdir}/rspec/matchers
 %{ruby_specdir}/%{pkgname}-%{version}.gemspec
