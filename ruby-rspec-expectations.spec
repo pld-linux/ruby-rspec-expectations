@@ -9,7 +9,7 @@ Summary:	Rspec-2 expectations (should and matchers)
 Summary(pl.UTF-8):	Oczekiwania Rspec-2 (should oraz matchers)
 Name:		ruby-%{pkgname}
 Version:	3.7.0
-Release:	1
+Release:	2
 License:	MIT
 Group:		Development/Languages
 Source0:	http://rubygems.org/gems/%{pkgname}-%{version}.gem
