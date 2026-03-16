@@ -8,12 +8,12 @@
 Summary:	Rspec-2 expectations (should and matchers)
 Summary(pl.UTF-8):	Oczekiwania Rspec-2 (should oraz matchers)
 Name:		ruby-%{pkgname}
-Version:	3.7.0
-Release:	2
+Version:	3.13.5
+Release:	1
 License:	MIT
 Group:		Development/Languages
 Source0:	http://rubygems.org/gems/%{pkgname}-%{version}.gem
-# Source0-md5:	23a198e5227cb308417efef6d136c41e
+# Source0-md5:	7ad783e983c23817322604dfc47e1edf
 URL:		http://github.com/rspec/rspec-expectations
 BuildRequires:	rpm-rubyprov
 BuildRequires:	rpmbuild(macros) >= 1.656
@@ -21,7 +21,7 @@ BuildRequires:	ruby >= 1:1.8.7
 %if %{with tests}
 BuildRequires:	ruby-minitest >= 5.2
 BuildRequires:	ruby-rspec
-BuildRequires:	ruby-rspec-support >= 3.7.0
+BuildRequires:	ruby-rspec-support >= 3.13.0
 %endif
 # .gemspec contains: s.add_dependency(%q<diff-lcs>.freeze, ["< 2.0", ">= 1.2.0"])
 # but only "rubygems(diff-lcs) < 2.0" is detected, "rubygems(diff-lcs) >= 1.2.0" not...
